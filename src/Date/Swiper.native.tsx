@@ -65,26 +65,6 @@ function SwiperInner({
 
   const parentRef = useRef<ScrollView | null>(null)
 
-  // Start on the current month instead of at 0 (where no month is rendered)
-  // and then jumping there after mount. Later moves go through scrollTo.
-  const [contentOffset] = useState(() => {
-    if (!isIndexWithinRange(initialIndex, startYear, endYear)) {
-      return undefined
-    }
-    return isHorizontal
-      ? { x: getHorizontalMonthOffset(initialIndex, width), y: 0 }
-      : {
-          x: 0,
-          y:
-            getVerticalMonthsOffset(
-              initialIndex,
-              startWeekOnMonday,
-              startYear,
-              endYear
-            ) - montHeaderHeight,
-        }
-  })
-
   const scrollTo = useCallback(
     (index: number, animated: boolean) => {
       if (!isIndexWithinRange(index, startYear, endYear)) {
@@ -228,7 +208,6 @@ function SwiperInner({
         onMomentumScrollEnd={onMomentumScrollEnd}
         onScrollEndDrag={onMomentumScrollEnd}
         onLayout={scrollToCurrent}
-        contentOffset={contentOffset}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         decelerationRate="fast"
