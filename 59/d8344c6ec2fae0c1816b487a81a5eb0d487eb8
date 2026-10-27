@@ -1,0 +1,33 @@
+src/__tests__/Date/Calendar.test.tsx
+  s_4a1a7d7509b77f::t_6f110966ffa806 3,17-44,46-53,57-61
+  s_4a1a7d7509b77f::t_0933d19847188b 45,54-56
+src/Date/Swiper.native.tsx
+  s_4a1a7d7509b77f::t_3ae531530f8460 39
+  s_4a1a7d7509b77f::t_017e88e1daff63 68-87,231
+src/Date/Calendar.tsx
+  s_4a1a7d7509b77f::t_3ae531530f8460 80-85,145,217
+src/__tests__/Date/AutoSize.test.tsx
+  s_4a1a7d7509b77f::t_6f110966ffa806 46-70
+src/Date/AutoSizer.tsx
+  s_4a1a7d7509b77f::t_3ae531530f8460 16,19-20,51
+src/Date/Swiper.tsx
+  s_4a1a7d7509b77f::t_017e88e1daff63 47,98,128
+src/Date/SwiperUtils.ts
+  s_4a1a7d7509b77f::t_3ae531530f8460 29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "59d8344c6ec2fae0c1816b487a81a5eb0d487eb8",
+  "prompts": {},
+  "sessions": {
+    "s_4a1a7d7509b77f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b36ebcde-1dd0-494c-94bf-54a4fb46486d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "VaradEDS <varad@equitydatascience.com>"
+    }
+  }
+}
