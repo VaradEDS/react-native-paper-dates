@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react-native'
 import Calendar from '../../Date/Calendar'
+import { getInitialIndex } from '../../Date/dateUtils'
 
 it('renders Calendar', async () => {
   const fixedDate = new Date('2025-01-15')
@@ -12,4 +13,49 @@ it('renders Calendar', async () => {
     />
   )
   expect(toJSON()).toMatchSnapshot()
+})
+
+it('draws the month on the first render when initialLayout is given', async () => {
+  const fixedDate = new Date('2025-01-15')
+  const { queryByText, rerender } = await render(
+    <Calendar
+      locale="en"
+      mode="single"
+      date={fixedDate}
+      onChange={() => null}
+    />
+  )
+  // Without a size it waits for its own layout.
+  expect(queryByText('January 2025')).toBeNull()
+
+  await rerender(
+    <Calendar
+      locale="en"
+      mode="single"
+      date={fixedDate}
+      onChange={() => null}
+      initialLayout={{ width: 320, height: 400 }}
+    />
+  )
+  expect(queryByText('January 2025')).toBeTruthy()
+})
+
+it('starts the month pager on the selected month', async () => {
+  const fixedDate = new Date('2025-01-15')
+  const { root } = await render(
+    <Calendar
+      locale="en"
+      mode="single"
+      date={fixedDate}
+      onChange={() => null}
+      initialLayout={{ width: 320, height: 400 }}
+    />
+  )
+  const [pager] = root!.queryAll((node) => node.props.pagingEnabled === true, {
+    includeSelf: true,
+  })
+  expect(pager.props.contentOffset).toEqual({
+    x: getInitialIndex(fixedDate) * 320,
+    y: 0,
+  })
 })
